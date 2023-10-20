@@ -22,12 +22,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-    <div id="app">
         @include('layouts.navbar')
 
         <main class="py-4">

@@ -15,6 +15,8 @@ class PostController extends Controller
 
     public function __construct(Post $post)
     {
+        $this->middleware('auth');
+        
         $this->post = $post;
     }
     /**
@@ -100,6 +102,6 @@ class PostController extends Controller
     {
         $data = $post->find($post->id);
         $data->delete();
-        return redirect()->route('posts.index')->with('success', 'Todo delete successfully.');
+        return redirect()->route('posts.index')->with('success', 'Post delete successfully.');
     }
 }

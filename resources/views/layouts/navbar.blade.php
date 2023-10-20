@@ -9,17 +9,20 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-                <li>
-                    <a class="nav-link {{ request()->segment(2) == '' ? 'active' : '' }}"
-                        href="{{ url('posts') }}">News Index</a>
-                </li>
-                <li>
-                    <a class="nav-link {{ request()->segment(2) == 'create' ? 'active' : '' }}"
-                        href="{{ route('posts.create') }}">Create a News</a>
-                </li>
-            </ul>
+            @auth
+
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
+                    <li>
+                        <a class="nav-link {{ request()->segment(2) == '' ? 'active' : '' }}"
+                            href="{{ url('posts') }}">News Index</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->segment(2) == 'create' ? 'active' : '' }}"
+                            href="{{ route('posts.create') }}">Create a News</a>
+                    </li>
+                </ul>
+            @endauth
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
@@ -39,12 +42,10 @@
                 @else
                     <div class="flex justify-end flex-1 px-2">
                         <div class="flex items-stretch">
-                            <a class="btn btn-ghost rounded-btn">{{ Auth::user()->name }}</a>
-                            <a class="btn btn-ghost rounded-btn" href="{{ route('logout') }}"
+                            <a class="menu menu-horizontal text-light">{{ Auth::user()->name }}</a>
+                            <a class="menu menu-horizontal text-light" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                               document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

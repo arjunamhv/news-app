@@ -8,7 +8,7 @@
             <span class="label-text" for="txttitle">Title</span>
         </label>
         <input type="text" id="txttitle" name="txttitle" placeholder="title" value="{{ old('txttitle') }}"
-            class="input input-bordered @error('txttitle') is-invalid @enderror" />
+            class="input input-bordered @error('txttitle') is-invalid @enderror" autofocus/>
         @error('txttitle')
             <div class="alert alert-danger text-error"><i class="fa-solid fa-circle-exclamation"></i>{{ $message }}
             </div>

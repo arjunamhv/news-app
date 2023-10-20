@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auto.logout');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home')
+    ->middleware('auto.logout');
 
-route::resource('posts', App\Http\Controllers\PostController::class);
+
+route::resource('posts', App\Http\Controllers\PostController::class)
+    ->middleware('auto.logout');
